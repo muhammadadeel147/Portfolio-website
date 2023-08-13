@@ -2,6 +2,8 @@ const express =require('express');
 const bcrypt= require("bcrypt");
 const router= express.Router();
 const jwt = require('jsonwebtoken');
+const authenticate=require("../middleware/authenticate");
+
 require("../db/conn");
 
 const User=require("../model/userSchema");
@@ -75,7 +77,7 @@ router.post("/register",async (req, res) => {
         
     }
      catch (error) {
-        console.log(err);
+        console.log(error);
     }
   //console.log(name);
     //console.log(email);
@@ -156,5 +158,17 @@ else{
 //         }
 
 //     });
+
+router.get("/about",authenticate, (req, res) => {
+    console.log("about middleware");
+    res.send(req.rootUser);
+});
+
+
+router.get("/getdata",authenticate, (req, res) => {
+    console.log("about middleware");
+    res.send(req.rootUser);
+});
+
 
 module.exports = router;
