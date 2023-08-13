@@ -79,14 +79,14 @@ router.post("/register",async (req, res) => {
      catch (error) {
         console.log(error);
     }
-  //console.log(name);
-    //console.log(email);
+  console.log(name);
+console.log(email);
     
     });
 
 
 
-// video foloow login page
+
 
 
     router.post('/signin',async (req, res) =>{
@@ -127,37 +127,6 @@ else{
     });
 
 
-
-
-
-// Self made login page
-//     router.post("/login", async (req, res) => {
-       
-//         const{email,password,}=req.body;
-    
-//         if ( !email || !password ) {
-//             return res.status(422).json({error:"No Empty Field"});
-//         }
-//         try {
-//             const userExist=  await User.findOne({email:email});
-// if(userExist) {
-//     const userPassword=userExist.password===req.body.password;
-//     if(userPassword) {
-//         res.status(201).json({message:"user Login successfully"});
-//     }
-//     else{
-//         res.status(500).json({message:"password didnot match"});
-//     }
-
-// }
-// else{
-//     res.status(500).json({message:"user does not exist"});
-// }
-//         } catch (error) {
-//             console.log(error);
-//         }
-
-//     });
 
 router.get("/about",authenticate, (req, res) => {
     console.log("about middleware");
